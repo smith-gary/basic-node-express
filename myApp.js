@@ -23,15 +23,23 @@ app.get('/now', (req, res, next) => {
 	
 })
 
+app.get('/:word/echo', (req, res, next) => {
+	word = req.params.word
+	next();
+},(req, res) => {
+	console.log(res.json({echo: word}));
+});
+
 // console.log(process.env.MESSAGE_STYLE);
 // app.get("/json", (req, res) => {
-// 	req.message = "Hello json";
-//   if ((process.env.MESSAGE_STYLE === "uppercase")) {
-// 	console.log(res.json({message: req.message.toUpperCase()}));
-//   } else {
-// 	console.log(res.json({message: req.message}));
-//   }
-//   res.sendFile(__dir + "your-app-url/json");
+// 	let response =  "Hello json";
+// 	res.json({message: response});
+//   if (process.env.MESSAGE_STYLE === 'uppercase') {
+// 	 response = response.toUpperCase();
+//   } 
+  
+//   res.sendFile(__dir + "http://localhost:3000");
+  
 // });
 
 module.exports = app;
